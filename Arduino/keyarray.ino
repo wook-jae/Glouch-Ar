@@ -1,194 +1,227 @@
-#include <Keyboard.h>
+#include <SoftwareSerial.h>
+  
+  SoftwareSerial BTSerial(3, 2); // SoftwareSerial(RX, TX)
 
 
-void setup() {  
-  Serial.begin(9600);
-  Keyboard.begin();
-  pinMode(A1, INPUT_PULLUP);
-  pinMode(A2, INPUT_PULLUP);
-  pinMode(A3, INPUT_PULLUP);
-  pinMode(A4, INPUT_PULLUP);
-  pinMode(A5, INPUT_PULLUP);
-  pinMode(2, OUTPUT);
-  pinMode(3, OUTPUT);
-  pinMode(4, OUTPUT);
+//cnt1 ~ 14 Count for each button that checks digital signal 
+//btn1 ~ 14 Value for each button
+int cnt1, cnt2, cnt3, cnt4, cnt5, cnt6, cnt7, cnt8, cnt9, cnt10, cnt11, cnt12, cnt13, cnt14;
+String btn1 = "1";
+String btn2 = "2";
+String btn3 = "3";
+String btn4 = "4";
+String btn5 = "5";
+String btn6 = "6";
+String btn7 = "7";
+String btn8 = "8";
+String btn9 = "9";
+String btn10 = "10";
+String btn11 = "11";
+String btn12 = "12";
+String btn13 = "13";
+String btn14 = "14";
+
+void setup(){
+  BTSerial.begin(9600); 
+  Serial.begin(9600); 
+                                    //      D5  D6  D7  D8
+  pinMode(A5, INPUT_PULLUP);        // A5 | 1 | 2 | 3 | 4 |
+  pinMode(A4, INPUT_PULLUP);        // A4 | 5 | 6 | 7 | 8 |
+  pinMode(A3, INPUT_PULLUP);        // A3 | 9 | 10| 11| 12|
+  pinMode(A2, INPUT_PULLUP);        // A2 | X | 13| 14| X |
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
-  pinMode(12, OUTPUT);
-  pinMode(13, OUTPUT);
-  pinMode(14, OUTPUT);
-  pinMode(15, OUTPUT);
 }
-
-void loop() {
-
-
-  digitalWrite(2, LOW);
-  if (digitalRead(A5)) Keyboard.release(96);
-  else Keyboard.press(96);
-  if (digitalRead(A4)) Keyboard.release(KEY_TAB);
-  else Keyboard.press(KEY_TAB);
-  if (digitalRead(A3)) Keyboard.release(KEY_CAPS_LOCK);
-  else Keyboard.press(KEY_CAPS_LOCK);
-  if (digitalRead(A2)) Keyboard.release(KEY_LEFT_SHIFT);
-  else Keyboard.press(KEY_LEFT_SHIFT);
-  if (digitalRead(A1)) Keyboard.release(KEY_LEFT_CTRL);
-  else Keyboard.press(KEY_LEFT_CTRL);
-  digitalWrite(2, HIGH);
-
-  digitalWrite(3, LOW);
-  if (digitalRead(A5)) Keyboard.release('1');
-  else Keyboard.press('1');
-  if (digitalRead(A4)) Keyboard.release('q');
-  else Keyboard.press('q'); 
-  if (digitalRead(A3)) Keyboard.release('a');
-  else Keyboard.press('a');
-  if (digitalRead(A2)) Keyboard.release('z');
-  else Keyboard.press('z');
-  if (digitalRead(A1)) Keyboard.release(KEY_LEFT_GUI);
-  else Keyboard.press(KEY_LEFT_GUI);
-  digitalWrite(3, HIGH);
-
-    digitalWrite(4, LOW);
-  if (digitalRead(A5)) Keyboard.release('2');
-  else Keyboard.press('2');
-  if (digitalRead(A4)) Keyboard.release('w');
-  else Keyboard.press('w'); 
-  if (digitalRead(A3)) Keyboard.release('s');
-  else Keyboard.press('s');
-  if (digitalRead(A2)) Keyboard.release('x');
-  else Keyboard.press('x');
-  if (digitalRead(A1)) Keyboard.release(KEY_LEFT_ALT);
-  else Keyboard.press(KEY_LEFT_ALT);
-  digitalWrite(4, HIGH);
+ 
+void loop(){
+/////////////// 1st Column [1, 5, 9] ////////////////
 
   digitalWrite(5, LOW);
-  if (digitalRead(A5)) Keyboard.release('3');
-  else Keyboard.press('3');
-  if (digitalRead(A4)) Keyboard.release('e');
-  else Keyboard.press('e'); 
-  if (digitalRead(A3)) Keyboard.release('d');
-  else Keyboard.press('d');
-  if (digitalRead(A2)) Keyboard.release('c');
-  else Keyboard.press('c');
+  
+  if (!digitalRead(A5)) {
+
+    cnt1++;
+    
+    if(cnt1 >= 4000){
+      
+      cnt1 = 0;
+      BTSerial.println(btn1);
+      Serial.println('1');
+    }
+  }
+
+  if (!digitalRead(A4)){
+    
+    cnt5++;
+    
+    if(cnt5 >= 4000){
+      
+      cnt5 = 0;
+      BTSerial.println(btn5);
+      Serial.println('5');
+    }
+  }
+  
+  if (!digitalRead(A3)){
+   
+    cnt9++;
+    
+    if(cnt9 >= 4000){
+      
+      cnt9 = 0;
+      BTSerial.println(btn9);
+      Serial.println('9');
+    }
+  }
   digitalWrite(5, HIGH);
 
+/////////////// 2nd Column [2, 6, 10, 13] ////////////////
+
   digitalWrite(6, LOW);
-  if (digitalRead(A5)) Keyboard.release('4');
-  else Keyboard.press('4');
-  if (digitalRead(A4)) Keyboard.release('r');
-  else Keyboard.press('r'); 
-  if (digitalRead(A3)) Keyboard.release('f');
-  else Keyboard.press('f');
-  if (digitalRead(A2)) Keyboard.release('v');
-  else Keyboard.press('v');
+  
+  if (!digitalRead(A5)) {
+
+    cnt2++;
+    
+    if(cnt2 >= 4000){
+      
+      cnt2 = 0;
+      BTSerial.println(btn2);
+      Serial.println('2');
+    }
+  }
+
+  if (!digitalRead(A4)){
+    
+    cnt6++;
+    
+    if(cnt6 >= 4000){
+      
+      cnt6 = 0;
+      BTSerial.println(btn6);
+      Serial.println('6');
+    }
+  }
+  
+  if (!digitalRead(A3)){
+   
+    cnt10++;
+    
+    if(cnt10 >= 4000){
+      
+      cnt10 = 0;
+      BTSerial.println(btn10);
+      Serial.println("10");
+    }
+  }
+
+  if (!digitalRead(A2)){
+   
+    cnt13++;
+    
+    if(cnt13 >= 4000){
+      
+      cnt13 = 0;
+      BTSerial.println(btn13);
+      Serial.println("13");
+    }
+  }
   digitalWrite(6, HIGH);
 
-    digitalWrite(7, LOW);
-  if (digitalRead(A5)) Keyboard.release('5');
-  else Keyboard.press('5');
-  if (digitalRead(A4)) Keyboard.release('t');
-  else Keyboard.press('t'); 
-  if (digitalRead(A3)) Keyboard.release('g');
-  else Keyboard.press('g');
-  if (digitalRead(A2)) Keyboard.release('b');
-  else Keyboard.press('b');
+
+/////////////// 3rd Column [3, 7, 11, 14] ////////////////
+
+  digitalWrite(7, LOW);
+  
+  if (!digitalRead(A5)) {
+
+    cnt3++;
+    
+    if(cnt3 >= 4000){
+      
+      cnt3 = 0;
+      BTSerial.println(btn3);
+      Serial.println('3');
+    }
+  }
+
+  if (!digitalRead(A4)){
+    
+    cnt7++;
+    
+    if(cnt7 >= 4000){
+      
+      cnt7 = 0;
+      BTSerial.println(btn7);
+      Serial.println('7');
+    }
+  }
+  
+  if (!digitalRead(A3)){
+   
+    cnt11++;
+    
+    if(cnt11 >= 4000){
+      
+      cnt11 = 0;
+      BTSerial.println(btn11);
+      Serial.println('11');
+    }
+  }
+
+  if (!digitalRead(A2)){
+   
+    cnt14++;
+    
+    if(cnt14 >= 4000){
+      
+      cnt14 = 0;
+      BTSerial.println(btn14);
+      Serial.println('14');
+    }
+  }
   digitalWrite(7, HIGH);
 
-    digitalWrite(8, LOW);
-  if (digitalRead(A5)) Keyboard.release('6');
-  else Keyboard.press('6');
-  if (digitalRead(A4)) Keyboard.release('y');
-  else Keyboard.press('y'); 
-  if (digitalRead(A3)) Keyboard.release('h');
-  else Keyboard.press('h');
-  if (digitalRead(A2)) Keyboard.release('n');
-  else Keyboard.press('n');
-  digitalWrite(8, HIGH);
+/////////////// 4th Column [4, 8, 12] ////////////////
 
-  digitalWrite(9, LOW);
-  if (digitalRead(A5)) Keyboard.release('7');
-  else Keyboard.press('7');
-  if (digitalRead(A4)) Keyboard.release('u');
-  else Keyboard.press('u'); 
-  if (digitalRead(A3)) Keyboard.release('j');
-  else Keyboard.press('j');
-  if (digitalRead(A2)) Keyboard.release('m');
-  else Keyboard.press('m');
-    if (digitalRead(A1)) Keyboard.release(32);
-  else Keyboard.press(32);
-  digitalWrite(9, HIGH);
+  digitalWrite(7, LOW);
   
-  digitalWrite(10, LOW);
-  if (digitalRead(A5)) Keyboard.release('8');
-  else Keyboard.press('8');
-  if (digitalRead(A4)) Keyboard.release('i');
-  else Keyboard.press('i'); 
-  if (digitalRead(A3)) Keyboard.release('k');
-  else Keyboard.press('k');
-  digitalWrite(10, HIGH);
+  if (!digitalRead(A5)) {
 
-  digitalWrite(11, LOW);
-  if (digitalRead(A5)) Keyboard.release('9');
-  else Keyboard.press('9');
-  if (digitalRead(A4)) Keyboard.release('o');
-  else Keyboard.press('o'); 
-  if (digitalRead(A3)) Keyboard.release('l');
-  else Keyboard.press('l');
-  if (digitalRead(A2)) Keyboard.release(44);
-  else Keyboard.press(44);
-  if (digitalRead(A1)) Keyboard.release(KEY_RIGHT_ALT);
-  else Keyboard.press(KEY_RIGHT_ALT);
-  digitalWrite(11, HIGH);
+    cnt4++;
+    
+    if(cnt4 >= 4000){
+      
+      cnt4 = 0;
+      BTSerial.println(btn4);
+      Serial.println('4');
+    }
+  }
 
-  digitalWrite(12, LOW);
-  if (digitalRead(A5)) Keyboard.release('0');
-  else Keyboard.press('0');
-  if (digitalRead(A4)) Keyboard.release('p');
-  else Keyboard.press('p'); 
-  if (digitalRead(A3)) Keyboard.release(59);
-  else Keyboard.press(59);
-  if (digitalRead(A2)) Keyboard.release(46);
-  else Keyboard.press(46);
-  if (digitalRead(A1)) Keyboard.release(KEY_RIGHT_GUI);
-  else Keyboard.press(KEY_RIGHT_GUI);
-  digitalWrite(12, HIGH);
-
-  digitalWrite(13, LOW);
-  if (digitalRead(A5)) Keyboard.release(45);
-  else Keyboard.press(45);
-  if (digitalRead(A4)) Keyboard.release(91);
-  else Keyboard.press(91); 
-  if (digitalRead(A3)) Keyboard.release(39);
-  else Keyboard.press(39);
-  if (digitalRead(A2)) Keyboard.release(47);
-  else Keyboard.press(47);
-  if (digitalRead(A1)) Keyboard.release(254);
-  else Keyboard.press(254);
-  digitalWrite(13, HIGH);
-
-  digitalWrite(14, LOW);
-  if (digitalRead(A5)) Keyboard.release(61);
-  else Keyboard.press(61);
-  if (digitalRead(A4)) Keyboard.release(93);
-  else Keyboard.press(93); 
-  digitalWrite(14, HIGH);
-
-  digitalWrite(15, LOW);
-  if (digitalRead(A5)) Keyboard.release(KEY_BACKSPACE);
-  else Keyboard.press(KEY_BACKSPACE);
-  if (digitalRead(A4)) Keyboard.release(92);
-  else Keyboard.press(92); 
-  if (digitalRead(A3)) Keyboard.release(KEY_RETURN);
-  else Keyboard.press(KEY_RETURN);
-  if (digitalRead(A2)) Keyboard.release(KEY_RIGHT_SHIFT);
-  else Keyboard.press(KEY_RIGHT_SHIFT);
-  if (digitalRead(A1)) Keyboard.release(KEY_RIGHT_CTRL);
-  else Keyboard.press(KEY_RIGHT_CTRL);
-  digitalWrite(15, HIGH);
+  if (!digitalRead(A4)){
+    
+    cnt8++;
+    
+    if(cnt8 >= 4000){
+      
+      cnt8 = 0;
+      BTSerial.println(btn8);
+      Serial.println('8');
+    }
+  }
+  
+  if (!digitalRead(A3)){
+   
+    cnt12++;
+    
+    if(cnt12 >= 4000){
+      
+      cnt12 = 0;
+      BTSerial.println(btn12);
+      Serial.println('12');
+    }
+  }
+  digitalWrite(7, HIGH);
 }
