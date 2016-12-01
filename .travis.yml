@@ -1,4 +1,5 @@
 language: c
+script: scons
+sudo: true
 compiler:
   - clang
-  sudo: required
