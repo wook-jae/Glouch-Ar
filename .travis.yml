@@ -1,11 +1,9 @@
 {
   "language": "c",
   "sudo": true,
-  "script": [
-    "scons",
-    "nosetests"
-  ],
-  "compiler": "clang"
+  "script":"scons",
+
+  "compiler": "clang",
   "group": "stable",
   "dist": "precise",
   "os": "linux"
