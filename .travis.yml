@@ -1,5 +1,12 @@
-language: c
-script: scons
-sudo: true
-compiler:
-  - clang
+{
+  "language": "c",
+  "sudo": true,
+  "script": [
+    "scons",
+    "nosetests"
+  ],
+  "compiler": "clang"
+  "group": "stable",
+  "dist": "precise",
+  "os": "linux"
+}
