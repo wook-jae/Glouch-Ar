@@ -1,18 +1,4 @@
-<<<<<<< HEAD
 language: c
-script: scons
 compiler:
   - clang
   - gcc
-=======
-{
-  "language": "c",
-  "sudo": true,
-  "script":"scons",
-
-  "compiler": "clang",
-  "group": "stable",
-  "dist": "precise",
-  "os": "linux"
-}
->>>>>>> refs/remotes/wook-jae/master
