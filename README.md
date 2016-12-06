@@ -10,7 +10,7 @@
            Touchpad module  - 4x4 Matrix Board
 
 # DOCUMENTATION:
-   여기에는 이 프로젝트 문서들이 어디에 있는지 무엇을 설명하는지 쓰는 것 같습니다 :-)
+   
 
 # INSTALLING the source:
    1. Install Arduino IDE from https://www.arduino.cc/en/Main/Software
