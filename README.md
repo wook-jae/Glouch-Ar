@@ -2,12 +2,13 @@
 [![Build Status](https://travis-ci.org/wook-jae/Glouch-Ar.svg?branch=master)](https://travis-ci.org/wook-jae/Glouch-Ar)
 
 # WHAT IS THIS?
-   여기에는 이 소스코드가 어떤 일을 하는지 씁니다.
+   This is the code which is running above arduino board.<br></br>
+   Through using the code arduino board communicates(bluetooth) with andriod app.<br></br>
 
 # ON WHAT HARDWARE DOES IT RUN?
-  Board  : nano
-  Module : Bluetooth module - HC-05
-           Touchpad module  - 4x4 Matrix Board
+  Board  : nano<br></br>
+  Module : Bluetooth module - HC-05<br></br>
+           Touchpad module  - 4x4 Matrix Board<br></br> 
 
 # DOCUMENTATION:
    
