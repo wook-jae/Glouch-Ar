@@ -4,6 +4,9 @@
 # WHAT IS THIS?
    This is the code which is running above arduino board.<br></br>
    Through using the code arduino board communicates(bluetooth) with andriod app.<br></br>
+   **This code must be used with Gear S2's Glouch app and Glouch android app<br></br>
+   https://github.com/wook-jae/Glouch-A<br></br>
+   https://github.com/wook-jae/Glouch-T<br></br>
 
 # ON WHAT HARDWARE DOES IT RUN?
   Board  : nano<br></br>
